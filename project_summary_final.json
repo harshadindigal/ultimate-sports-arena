@@ -1,0 +1,30 @@
+{
+  "project_name": "Ultimate Sports Arena",
+  "description": "A full-stack sports trivia and game hub",
+  "total_files": 183,
+  "file_types": {
+    ".txt": 1,
+    ".md": 2,
+    ".json": 13,
+    ".sh": 2,
+    ".example": 1,
+    "": 105,
+    ".js": 43,
+    ".html": 1,
+    ".css": 1,
+    ".sample": 14
+  },
+  "components": {
+    "frontend": "React with TailwindCSS",
+    "backend": "Node.js with Express",
+    "database": "MongoDB with Mongoose"
+  },
+  "features": [
+    "13 sports categories",
+    "Multiple game modes per sport",
+    "User accounts and authentication",
+    "Leaderboard tracking",
+    "Real historical sports data"
+  ],
+  "github_status": "Token authentication issue - special format not compatible with standard GitHub authentication"
+}
