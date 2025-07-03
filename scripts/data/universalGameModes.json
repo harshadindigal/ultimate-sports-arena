@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Quick Play Trivia",
+    "description": "Test your knowledge with 10 quick trivia questions",
+    "isUniversal": true,
+    "rules": "Answer 10 questions within the time limit. Each correct answer earns points.",
+    "timeLimit": 300,
+    "pointsPerCorrectAnswer": 10,
+    "imageUrl": "/images/game-modes/quick-play-trivia.jpg"
+  },
+  {
+    "name": "Career Challenge",
+    "description": "Guess the player or team based on career clues",
+    "isUniversal": true,
+    "rules": "You'll be given clues about a player or team's career. Guess who it is!",
+    "timeLimit": 180,
+    "pointsPerCorrectAnswer": 15,
+    "imageUrl": "/images/game-modes/career-challenge.jpg"
+  },
+  {
+    "name": "True or False Blitz",
+    "description": "Rapid-fire true or false questions",
+    "isUniversal": true,
+    "rules": "Answer as many true or false questions as you can in 30 seconds.",
+    "timeLimit": 30,
+    "pointsPerCorrectAnswer": 5,
+    "imageUrl": "/images/game-modes/true-false-blitz.jpg"
+  },
+  {
+    "name": "Stat Master",
+    "description": "Given a stat, guess the correct player or year",
+    "isUniversal": true,
+    "rules": "You'll be shown a statistic. Guess which player achieved it or in which year it happened.",
+    "timeLimit": 240,
+    "pointsPerCorrectAnswer": 15,
+    "imageUrl": "/images/game-modes/stat-master.jpg"
+  },
+  {
+    "name": "Year in Review",
+    "description": "Identify events from a specific year in the sport",
+    "isUniversal": true,
+    "rules": "Answer questions about events that happened in a specific year.",
+    "timeLimit": 300,
+    "pointsPerCorrectAnswer": 10,
+    "imageUrl": "/images/game-modes/year-in-review.jpg"
+  }
+]

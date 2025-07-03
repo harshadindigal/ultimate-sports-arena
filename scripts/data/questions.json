@@ -1,0 +1,256 @@
+{
+  "americanFootballQuestions": [
+    {
+      "text": "Which quarterback holds the NFL record for most passing yards in a single season?",
+      "options": [
+        {
+          "text": "Peyton Manning",
+          "isCorrect": true
+        },
+        {
+          "text": "Drew Brees",
+          "isCorrect": false
+        },
+        {
+          "text": "Tom Brady",
+          "isCorrect": false
+        },
+        {
+          "text": "Patrick Mahomes",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Peyton Manning holds the NFL record with 5,477 passing yards in the 2013 season with the Denver Broncos.",
+      "difficulty": "medium",
+      "category": "Records",
+      "year": 2013
+    },
+    {
+      "text": "Which team won Super Bowl LIV (54)?",
+      "options": [
+        {
+          "text": "Kansas City Chiefs",
+          "isCorrect": true
+        },
+        {
+          "text": "San Francisco 49ers",
+          "isCorrect": false
+        },
+        {
+          "text": "New England Patriots",
+          "isCorrect": false
+        },
+        {
+          "text": "Philadelphia Eagles",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The Kansas City Chiefs defeated the San Francisco 49ers 31-20 in Super Bowl LIV on February 2, 2020.",
+      "difficulty": "easy",
+      "category": "Super Bowl",
+      "year": 2020
+    },
+    {
+      "text": "Who was the first overall pick in the 2020 NFL Draft?",
+      "options": [
+        {
+          "text": "Joe Burrow",
+          "isCorrect": true
+        },
+        {
+          "text": "Chase Young",
+          "isCorrect": false
+        },
+        {
+          "text": "Tua Tagovailoa",
+          "isCorrect": false
+        },
+        {
+          "text": "Justin Herbert",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Joe Burrow was selected first overall by the Cincinnati Bengals in the 2020 NFL Draft.",
+      "difficulty": "easy",
+      "category": "NFL Draft",
+      "year": 2020
+    },
+    {
+      "text": "Which NFL team is known as 'America's Team'?",
+      "options": [
+        {
+          "text": "Dallas Cowboys",
+          "isCorrect": true
+        },
+        {
+          "text": "Green Bay Packers",
+          "isCorrect": false
+        },
+        {
+          "text": "New England Patriots",
+          "isCorrect": false
+        },
+        {
+          "text": "Pittsburgh Steelers",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The Dallas Cowboys have been known as 'America's Team' since the late 1970s.",
+      "difficulty": "easy",
+      "category": "Team Nicknames",
+      "year": 1978
+    },
+    {
+      "text": "Who holds the NFL record for most rushing yards in a single game?",
+      "options": [
+        {
+          "text": "Adrian Peterson",
+          "isCorrect": false
+        },
+        {
+          "text": "Walter Payton",
+          "isCorrect": false
+        },
+        {
+          "text": "Derrick Henry",
+          "isCorrect": false
+        },
+        {
+          "text": "Adrian Peterson",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "Adrian Peterson holds the NFL record with 296 rushing yards in a single game, achieved on November 4, 2007, against the San Diego Chargers.",
+      "difficulty": "medium",
+      "category": "Records",
+      "year": 2007
+    }
+  ],
+  "basketballQuestions": [
+    {
+      "text": "Who holds the NBA record for most points scored in a single game?",
+      "options": [
+        {
+          "text": "Wilt Chamberlain",
+          "isCorrect": true
+        },
+        {
+          "text": "Kobe Bryant",
+          "isCorrect": false
+        },
+        {
+          "text": "Michael Jordan",
+          "isCorrect": false
+        },
+        {
+          "text": "LeBron James",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Wilt Chamberlain scored 100 points for the Philadelphia Warriors against the New York Knicks on March 2, 1962.",
+      "difficulty": "easy",
+      "category": "Records",
+      "year": 1962
+    },
+    {
+      "text": "Which team won the first NBA championship?",
+      "options": [
+        {
+          "text": "Philadelphia Warriors",
+          "isCorrect": true
+        },
+        {
+          "text": "Boston Celtics",
+          "isCorrect": false
+        },
+        {
+          "text": "Minneapolis Lakers",
+          "isCorrect": false
+        },
+        {
+          "text": "Chicago Stags",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "The Philadelphia Warriors won the first BAA (Basketball Association of America, which later became the NBA) championship in 1947.",
+      "difficulty": "hard",
+      "category": "NBA History",
+      "year": 1947
+    },
+    {
+      "text": "Who was the first WNBA player to dunk in a game?",
+      "options": [
+        {
+          "text": "Lisa Leslie",
+          "isCorrect": true
+        },
+        {
+          "text": "Brittney Griner",
+          "isCorrect": false
+        },
+        {
+          "text": "Candace Parker",
+          "isCorrect": false
+        },
+        {
+          "text": "Maya Moore",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Lisa Leslie made history on July 30, 2002, becoming the first woman to dunk in a WNBA game.",
+      "difficulty": "medium",
+      "category": "WNBA",
+      "year": 2002
+    },
+    {
+      "text": "Which NBA player has won the most championship rings?",
+      "options": [
+        {
+          "text": "Bill Russell",
+          "isCorrect": true
+        },
+        {
+          "text": "Michael Jordan",
+          "isCorrect": false
+        },
+        {
+          "text": "Kareem Abdul-Jabbar",
+          "isCorrect": false
+        },
+        {
+          "text": "LeBron James",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Bill Russell won 11 NBA championships with the Boston Celtics between 1957 and 1969.",
+      "difficulty": "medium",
+      "category": "Championships",
+      "year": 1969
+    },
+    {
+      "text": "Which college basketball team has won the most NCAA men's championships?",
+      "options": [
+        {
+          "text": "UCLA",
+          "isCorrect": true
+        },
+        {
+          "text": "Kentucky",
+          "isCorrect": false
+        },
+        {
+          "text": "North Carolina",
+          "isCorrect": false
+        },
+        {
+          "text": "Duke",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "UCLA has won 11 NCAA men's basketball championships, with 10 of them coming under legendary coach John Wooden.",
+      "difficulty": "medium",
+      "category": "NCAA",
+      "year": 1995
+    }
+  ]
+}

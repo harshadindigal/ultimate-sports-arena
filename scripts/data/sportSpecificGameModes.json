@@ -1,0 +1,147 @@
+{
+  "American Football": [
+    {
+      "name": "QB Ratings Game",
+      "description": "Match the QB to their passer rating in a given season",
+      "isUniversal": false,
+      "rules": "You'll be shown a passer rating and a season. Select the quarterback who achieved that rating.",
+      "timeLimit": 180,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/qb-ratings-game.jpg"
+    },
+    {
+      "name": "Super Bowl MVP Match",
+      "description": "Match Super Bowl MVPs to their teams and year",
+      "isUniversal": false,
+      "rules": "Match the Super Bowl MVP to the correct team and year they won the award.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 20,
+      "imageUrl": "/images/game-modes/super-bowl-mvp-match.jpg"
+    },
+    {
+      "name": "NFL Draft Trivia",
+      "description": "Guess draft year or round for famous players",
+      "isUniversal": false,
+      "rules": "You'll be shown a player. Guess which year they were drafted and in which round.",
+      "timeLimit": 300,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/nfl-draft-trivia.jpg"
+    }
+  ],
+  "Basketball": [
+    {
+      "name": "Build-A-Team",
+      "description": "Draft a fantasy 5-man squad under a point cap",
+      "isUniversal": false,
+      "rules": "Build the best possible 5-player team while staying under the point cap.",
+      "timeLimit": 300,
+      "pointsPerCorrectAnswer": 100,
+      "imageUrl": "/images/game-modes/build-a-team.jpg"
+    },
+    {
+      "name": "Guess the Stat Line",
+      "description": "Who had this stat line in a famous playoff game?",
+      "isUniversal": false,
+      "rules": "You'll be shown a stat line from a famous playoff game. Guess which player achieved it.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 20,
+      "imageUrl": "/images/game-modes/guess-stat-line.jpg"
+    },
+    {
+      "name": "Career Trajectory",
+      "description": "Drag-and-drop teams in the order a player played for them",
+      "isUniversal": false,
+      "rules": "Arrange the teams in the order that the player played for them during their career.",
+      "timeLimit": 180,
+      "pointsPerCorrectAnswer": 25,
+      "imageUrl": "/images/game-modes/career-trajectory.jpg"
+    }
+  ],
+  "Baseball": [
+    {
+      "name": "Home Run Derby History",
+      "description": "Trivia on derby winners",
+      "isUniversal": false,
+      "rules": "Answer questions about Home Run Derby winners throughout history.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/home-run-derby.jpg"
+    },
+    {
+      "name": "Perfect Game Predictor",
+      "description": "Was this stat line from a perfect game?",
+      "isUniversal": false,
+      "rules": "You'll be shown a pitcher's stat line. Guess whether it was from a perfect game or not.",
+      "timeLimit": 180,
+      "pointsPerCorrectAnswer": 20,
+      "imageUrl": "/images/game-modes/perfect-game-predictor.jpg"
+    },
+    {
+      "name": "Era Match",
+      "description": "Identify the decade based on team logos and player photos",
+      "isUniversal": false,
+      "rules": "You'll be shown team logos or player photos. Guess which decade they're from.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/era-match.jpg"
+    }
+  ],
+  "Soccer": [
+    {
+      "name": "World Cup Matchup Memory",
+      "description": "Who played who in each stage?",
+      "isUniversal": false,
+      "rules": "You'll be shown a World Cup stage and year. Guess which teams played against each other.",
+      "timeLimit": 300,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/world-cup-matchup.jpg"
+    },
+    {
+      "name": "Golden Boot Timeline",
+      "description": "Rank top scorers by year",
+      "isUniversal": false,
+      "rules": "Arrange the Golden Boot winners in chronological order.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 20,
+      "imageUrl": "/images/game-modes/golden-boot-timeline.jpg"
+    },
+    {
+      "name": "Club Journey",
+      "description": "Match players to clubs over their careers",
+      "isUniversal": false,
+      "rules": "Match players to the clubs they played for during their careers.",
+      "timeLimit": 300,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/club-journey.jpg"
+    }
+  ],
+  "Tennis": [
+    {
+      "name": "Grand Slam Sweep",
+      "description": "Identify who won all 4 in a year",
+      "isUniversal": false,
+      "rules": "Identify which players have won all four Grand Slam tournaments in a single calendar year.",
+      "timeLimit": 180,
+      "pointsPerCorrectAnswer": 25,
+      "imageUrl": "/images/game-modes/grand-slam-sweep.jpg"
+    },
+    {
+      "name": "Rivalry Tracker",
+      "description": "Who won more matches in specific rivalries",
+      "isUniversal": false,
+      "rules": "You'll be shown two players and a time period. Guess who won more head-to-head matches.",
+      "timeLimit": 240,
+      "pointsPerCorrectAnswer": 15,
+      "imageUrl": "/images/game-modes/rivalry-tracker.jpg"
+    },
+    {
+      "name": "Score Breakdown",
+      "description": "Which Slam final had this scoreline?",
+      "isUniversal": false,
+      "rules": "You'll be shown a scoreline. Guess which Grand Slam final it was from.",
+      "timeLimit": 210,
+      "pointsPerCorrectAnswer": 20,
+      "imageUrl": "/images/game-modes/score-breakdown.jpg"
+    }
+  ]
+}

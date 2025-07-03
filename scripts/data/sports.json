@@ -1,0 +1,102 @@
+[
+  {
+    "name": "American Football",
+    "description": "American football, referred to simply as football in the United States and Canada, is a team sport played by two teams of eleven players on a rectangular field with goalposts at each end.",
+    "imageUrl": "/images/sports/american-football.jpg",
+    "leagues": [
+      {
+        "name": "NFL",
+        "description": "National Football League",
+        "imageUrl": "/images/leagues/nfl.jpg"
+      },
+      {
+        "name": "NCAA",
+        "description": "National Collegiate Athletic Association",
+        "imageUrl": "/images/leagues/ncaa-football.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Basketball",
+    "description": "Basketball is a team sport in which two teams, most commonly of five players each, opposing one another on a rectangular court, compete with the primary objective of shooting a basketball through the defender's hoop.",
+    "imageUrl": "/images/sports/basketball.jpg",
+    "leagues": [
+      {
+        "name": "NBA",
+        "description": "National Basketball Association",
+        "imageUrl": "/images/leagues/nba.jpg"
+      },
+      {
+        "name": "WNBA",
+        "description": "Women's National Basketball Association",
+        "imageUrl": "/images/leagues/wnba.jpg"
+      },
+      {
+        "name": "NCAA",
+        "description": "National Collegiate Athletic Association",
+        "imageUrl": "/images/leagues/ncaa-basketball.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Baseball",
+    "description": "Baseball is a bat-and-ball sport played between two teams of nine players each, taking turns batting and fielding.",
+    "imageUrl": "/images/sports/baseball.jpg",
+    "leagues": [
+      {
+        "name": "MLB",
+        "description": "Major League Baseball",
+        "imageUrl": "/images/leagues/mlb.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Soccer",
+    "description": "Soccer (or football) is a team sport played between two teams of 11 players with a spherical ball.",
+    "imageUrl": "/images/sports/soccer.jpg",
+    "leagues": [
+      {
+        "name": "FIFA World Cup",
+        "description": "International association football competition",
+        "imageUrl": "/images/leagues/fifa-world-cup.jpg"
+      },
+      {
+        "name": "EPL",
+        "description": "English Premier League",
+        "imageUrl": "/images/leagues/epl.jpg"
+      },
+      {
+        "name": "La Liga",
+        "description": "Spanish Football League",
+        "imageUrl": "/images/leagues/la-liga.jpg"
+      },
+      {
+        "name": "Champions League",
+        "description": "UEFA Champions League",
+        "imageUrl": "/images/leagues/champions-league.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Tennis",
+    "description": "Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles).",
+    "imageUrl": "/images/sports/tennis.jpg",
+    "leagues": [
+      {
+        "name": "ATP",
+        "description": "Association of Tennis Professionals",
+        "imageUrl": "/images/leagues/atp.jpg"
+      },
+      {
+        "name": "WTA",
+        "description": "Women's Tennis Association",
+        "imageUrl": "/images/leagues/wta.jpg"
+      },
+      {
+        "name": "Grand Slams",
+        "description": "The four most important annual tennis events",
+        "imageUrl": "/images/leagues/grand-slams.jpg"
+      }
+    ]
+  }
+]
