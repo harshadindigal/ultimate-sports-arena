@@ -1,0 +1,43 @@
+#!/bin/bash
+# GitHub deployment script
+
+# Configure git
+git config user.name "Ultimate Sports Arena Deployer"
+git config user.email "deployer@example.com"
+
+# Initialize git if needed
+if [ ! -d .git ]; then
+  echo "Initializing git repository..."
+  git init
+fi
+
+# Add all files
+echo "Adding files to git..."
+git add .
+
+# Commit changes
+echo "Committing changes..."
+git commit -m "Deploy Ultimate Sports Arena" || echo "No changes to commit"
+
+# Set remote origin with correct token format
+echo "Setting up GitHub repository connection..."
+git remote remove origin 2>/dev/null
+git remote add origin "https://h2ogpt:${GITHUB_TOKEN}@github.com/h2ogpt/ultimate-sports-arena.git"
+
+# Try to push to main branch first (GitHub default)
+echo "Pushing to GitHub main branch..."
+if git push -u origin main; then
+  echo "Successfully pushed to GitHub repository: h2ogpt/ultimate-sports-arena (main branch)"
+else
+  # If main fails, try master branch
+  echo "Pushing to GitHub master branch..."
+  if git push -u origin master; then
+    echo "Successfully pushed to GitHub repository: h2ogpt/ultimate-sports-arena (master branch)"
+  else
+    # Create main branch and push if both fail
+    echo "Creating main branch and pushing..."
+    git checkout -b main
+    git push -u origin main
+    echo "Successfully pushed to GitHub repository: h2ogpt/ultimate-sports-arena (new main branch)"
+  fi
+fi
