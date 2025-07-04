@@ -85,7 +85,7 @@ class NBAETLPipeline extends ETLPipeline {
       const uniqueGames = new Map();
       for (const game of rawData.games) {
         // Create a unique key for the game
-        const gameKey = \`\${game.date}-\${game.homeTeam || game.participants[0]}-\${game.awayTeam || game.participants[1]}\`;
+        const gameKey = `${game.date}-${game.homeTeam || game.participants[0]}-${game.awayTeam || game.participants[1]}`;
         
         if (!uniqueGames.has(gameKey)) {
           uniqueGames.set(gameKey, game);
