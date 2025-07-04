@@ -122,10 +122,10 @@ class NBAETLPipeline extends ETLPipeline {
       console.log('Starting NBA ETL pipeline...');
       
       const rawData = await this.extract();
-      console.log(\`Extracted \${rawData.teams.length} teams, \${rawData.players.length} players, \${rawData.games.length} games, \${rawData.playerStats.length} player stats\`);
+      console.log(`Extracted ${rawData.teams.length} teams, ${rawData.players.length} players, ${rawData.games.length} games, ${rawData.playerStats.length} player stats`);
       
       const normalizedData = await this.transform(rawData);
-      console.log(\`Transformed data into \${normalizedData.length} normalized records\`);
+      console.log(`Transformed data into ${normalizedData.length} normalized records`);
       
       const results = await this.load(normalizedData);
       console.log('NBA data loaded into Elasticsearch');
@@ -178,7 +178,7 @@ class NBAETLPipeline extends ETLPipeline {
         
         triviaQuestions.push({
           sport: 'NBA',
-          question: \`Who led the NBA in points per game for the \${topScorer.value.season} season?\`,
+          question: `Who led the NBA in points per game for the ${topScorer.value.season} season?`,
           options: [
             { text: topScorer.value.name, isCorrect: true },
             { text: 'LeBron James', isCorrect: false },
@@ -196,7 +196,7 @@ class NBAETLPipeline extends ETLPipeline {
       // Save trivia questions to Elasticsearch
       if (triviaQuestions.length > 0) {
         await this.bulkSaveToElasticsearch('trivia_matches_nba', triviaQuestions);
-        console.log(\`Generated and saved \${triviaQuestions.length} NBA trivia questions\`);
+        console.log(`Generated and saved ${triviaQuestions.length} NBA trivia questions`);
       }
       
       return triviaQuestions;
