@@ -10,6 +10,8 @@ const AchievementModel = require('./achievement_model');
 
 // Initialize all indices
 const initializeIndices = async () => {
+  // Ensure games and leaderboard indices are included
+  const indices = ['users', 'sports', 'questions', 'games', 'leaderboard'];
   await SportModel.createIndex();
   await QuestionModel.createIndex();
   await UserModel.createIndex();

@@ -40,10 +40,10 @@ connectElasticsearch();
 
 // Define routes
 app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/sports', require('./routes/sportRoutes'));
-app.use('/api/questions', require('./routes/questionRoutes'));
-app.use('/api/games', require('./routes/gameRoutes'));
-app.use('/api/leaderboard', require('./routes/leaderboardRoutes'));
+app.use('/api/sports', require('./routes/api/sports'));
+app.use('/api/questions', require('./routes/api/questions'));
+app.use('/api/games', require('./routes/api/games'));
+app.use('/api/leaderboard', require('./routes/api/leaderboard'));
 
 // Default route
 app.get('/', (req, res) => {
