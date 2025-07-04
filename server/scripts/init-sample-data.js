@@ -21,6 +21,51 @@ const sportsData = [
   }
 ];
 
+
+// Sample game modes data
+const gamesData = [
+  {
+    name: 'Quick Trivia',
+    description: 'Answer 10 quick trivia questions',
+    imageUrl: 'https://example.com/quick-trivia.jpg',
+    sport: 'NBA'
+  },
+  {
+    name: 'Championship Challenge',
+    description: 'Test your knowledge of championships',
+    imageUrl: 'https://example.com/championship-challenge.jpg',
+    sport: 'NFL'
+  },
+  {
+    name: 'Stats Master',
+    description: 'Answer questions about player statistics',
+    imageUrl: 'https://example.com/stats-master.jpg',
+    sport: 'MLB'
+  }
+];
+
+// Sample leaderboard data
+const leaderboardData = [
+  {
+    user: 'JohnDoe',
+    score: 100,
+    sport: 'NBA',
+    gameMode: 'Quick Trivia'
+  },
+  {
+    user: 'JaneSmith',
+    score: 90,
+    sport: 'NFL',
+    gameMode: 'Championship Challenge'
+  },
+  {
+    user: 'BobJohnson',
+    score: 80,
+    sport: 'MLB',
+    gameMode: 'Stats Master'
+  }
+];
+
 // Sample questions data
 const questionsData = [
   {
@@ -85,6 +130,33 @@ async function initSampleData() {
     
     console.log('Adding sample questions data...');
     for (const question of questionsData) {
+
+    console.log('Adding sample game modes data...');
+    for (const game of gamesData) {
+      await elasticClient.index({
+        index: 'games',
+        body: {
+          ...game,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        refresh: true
+      });
+    }
+    
+    console.log('Adding sample leaderboard data...');
+    for (const entry of leaderboardData) {
+      await elasticClient.index({
+        index: 'leaderboard',
+        body: {
+          ...entry,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        refresh: true
+      });
+    }
+
       await elasticClient.index({
         index: 'questions',
         body: {
