@@ -8,7 +8,9 @@
     "dev": "nodemon server.js",
     "seed": "node scripts/seed.js",
     "init-elastic": "node init-elasticsearch.js",
-    "collect-data": "node data-collection/index.js"
+    "collect-data": "node data-collection/index.js",
+    "test-sources": "node tests/test-data-sources.js",
+    "test-elastic": "node tests/test-elasticsearch.js"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.0.0",
