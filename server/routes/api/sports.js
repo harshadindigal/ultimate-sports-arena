@@ -7,7 +7,9 @@ const { elasticClient } = require('../../config/elastic');
 // @desc    Get all sports
 // @access  Public
 router.get('/', async (req, res) => {
+  console.log('GET /api/sports endpoint called');
   try {
+    console.log('Searching Elasticsearch for sports...');
     const result = await elasticClient.search({
       index: 'sports',
       body: {
@@ -17,14 +19,16 @@ router.get('/', async (req, res) => {
       }
     });
     
+    console.log('Elasticsearch result:', JSON.stringify(result));
     const sports = result.hits.hits.map(hit => ({
       id: hit._id,
       ...hit._source
     }));
     
+    console.log('Returning sports:', JSON.stringify(sports));
     res.json(sports);
   } catch (err) {
-    console.error(err.message);
+    console.error('Error in GET /api/sports:', err.message);
     res.status(500).send('Server Error');
   }
 });
@@ -34,6 +38,7 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/:id', async (req, res) => {
   try {
+    console.log('Searching Elasticsearch for sports...');
     const result = await elasticClient.get({
       index: 'sports',
       id: req.params.id
@@ -48,7 +53,7 @@ router.get('/:id', async (req, res) => {
       ...result._source
     });
   } catch (err) {
-    console.error(err.message);
+    console.error('Error in GET /api/sports:', err.message);
     if (err.statusCode === 404) {
       return res.status(404).json({ msg: 'Sport not found' });
     }

@@ -12,7 +12,8 @@
     "test-sources": "node tests/test-data-sources.js",
     "test-elastic": "node tests/test-elasticsearch.js",
     "preinstall": "node handle-arrow.js",
-    "init-data": "node scripts/init-sample-data.js"
+    "init-data": "node scripts/init-sample-data.js",
+    "test-endpoints": "node test-endpoints.js"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.0.0",
