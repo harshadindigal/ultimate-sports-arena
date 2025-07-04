@@ -1,11 +1,13 @@
+
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const User = require('../models/userModel');
+const { UserModel } = require('../models/elastic');
+const { SportModel } = require('../models/elastic');
+const { AchievementModel } = require('../models/elastic');
 
 // Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+    expiresIn: process.env.JWT_EXPIRE || '30d',
   });
 };
 
@@ -17,7 +19,7 @@ const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     // Check if user exists
-    const userExists = await User.findOne({ email });
+    const userExists = await UserModel.findByEmail(email);
 
     if (userExists) {
       res.status(400);
@@ -25,10 +27,13 @@ const registerUser = async (req, res) => {
     }
 
     // Create user
-    const user = await User.create({
+    const user = await UserModel.createUser({
       name,
       email,
       password,
+      isAdmin: false,
+      favoritesSports: [],
+      achievements: []
     });
 
     if (user) {
@@ -56,7 +61,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     // Check for user email
-    const user = await User.findOne({ email });
+    const user = await UserModel.findByEmail(email);
 
     if (user && (await user.matchPassword(password))) {
       res.json({
@@ -80,16 +85,38 @@ const loginUser = async (req, res) => {
 // @access  Private
 const getUserProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).populate('favoritesSports').populate('achievements');
+    const user = await UserModel.findById(req.user._id);
 
     if (user) {
+      // Fetch favorite sports
+      const favoritesSports = [];
+      if (user.favoritesSports && user.favoritesSports.length > 0) {
+        for (const sportId of user.favoritesSports) {
+          const sport = await SportModel.getSportById(sportId);
+          if (sport) {
+            favoritesSports.push(sport);
+          }
+        }
+      }
+
+      // Fetch achievements
+      const achievements = [];
+      if (user.achievements && user.achievements.length > 0) {
+        for (const achievementId of user.achievements) {
+          const achievement = await AchievementModel.getAchievementById(achievementId);
+          if (achievement) {
+            achievements.push(achievement);
+          }
+        }
+      }
+
       res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        favoritesSports: user.favoritesSports,
-        achievements: user.achievements,
+        favoritesSports,
+        achievements,
       });
     } else {
       res.status(404);
@@ -105,21 +132,15 @@ const getUserProfile = async (req, res) => {
 // @access  Private
 const updateUserProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await UserModel.findById(req.user._id);
 
     if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      
-      if (req.body.password) {
-        user.password = req.body.password;
-      }
-
-      if (req.body.favoritesSports) {
-        user.favoritesSports = req.body.favoritesSports;
-      }
-
-      const updatedUser = await user.save();
+      const updatedUser = await UserModel.updateUser(user._id, {
+        name: req.body.name || user.name,
+        email: req.body.email || user.email,
+        password: req.body.password,
+        favoritesSports: req.body.favoritesSports || user.favoritesSports
+      });
 
       res.json({
         _id: updatedUser._id,

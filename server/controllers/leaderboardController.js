@@ -1,18 +1,33 @@
-const Leaderboard = require('../models/leaderboardModel');
+
+const { LeaderboardModel } = require('../models/elastic');
+const { UserModel } = require('../models/elastic');
+const { SportModel } = require('../models/elastic');
+const { GameModeModel } = require('../models/elastic');
 
 // @desc    Get global leaderboard
 // @route   GET /api/leaderboard
 // @access  Public
 const getLeaderboard = async (req, res) => {
   try {
-    const leaderboard = await Leaderboard.find({})
-      .sort({ score: -1 })
-      .limit(100)
-      .populate('user', 'name')
-      .populate('sport', 'name')
-      .populate('gameMode', 'name');
+    const leaderboard = await LeaderboardModel.getLeaderboard();
     
-    res.json(leaderboard);
+    // Populate user, sport, and gameMode information
+    const populatedLeaderboard = await Promise.all(leaderboard.map(async (entry) => {
+      const [user, sport, gameMode] = await Promise.all([
+        UserModel.findById(entry.user),
+        SportModel.getSportById(entry.sport),
+        GameModeModel.getGameModeById(entry.gameMode)
+      ]);
+      
+      return {
+        ...entry,
+        user: user ? { _id: user._id, name: user.name } : null,
+        sport: sport ? { _id: sport._id, name: sport.name } : null,
+        gameMode: gameMode ? { _id: gameMode._id, name: gameMode.name } : null
+      };
+    }));
+    
+    res.json(populatedLeaderboard);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -23,14 +38,24 @@ const getLeaderboard = async (req, res) => {
 // @access  Public
 const getLeaderboardBySport = async (req, res) => {
   try {
-    const leaderboard = await Leaderboard.find({ sport: req.params.sportId })
-      .sort({ score: -1 })
-      .limit(100)
-      .populate('user', 'name')
-      .populate('gameMode', 'name');
+    const leaderboard = await LeaderboardModel.getLeaderboardBySport(req.params.sportId);
     
     if (leaderboard && leaderboard.length > 0) {
-      res.json(leaderboard);
+      // Populate user and gameMode information
+      const populatedLeaderboard = await Promise.all(leaderboard.map(async (entry) => {
+        const [user, gameMode] = await Promise.all([
+          UserModel.findById(entry.user),
+          GameModeModel.getGameModeById(entry.gameMode)
+        ]);
+        
+        return {
+          ...entry,
+          user: user ? { _id: user._id, name: user.name } : null,
+          gameMode: gameMode ? { _id: gameMode._id, name: gameMode.name } : null
+        };
+      }));
+      
+      res.json(populatedLeaderboard);
     } else {
       res.status(404);
       throw new Error('No leaderboard entries found for this sport');
@@ -45,14 +70,24 @@ const getLeaderboardBySport = async (req, res) => {
 // @access  Public
 const getLeaderboardByGameMode = async (req, res) => {
   try {
-    const leaderboard = await Leaderboard.find({ gameMode: req.params.gameModeId })
-      .sort({ score: -1 })
-      .limit(100)
-      .populate('user', 'name')
-      .populate('sport', 'name');
+    const leaderboard = await LeaderboardModel.getLeaderboardByGameMode(req.params.gameModeId);
     
     if (leaderboard && leaderboard.length > 0) {
-      res.json(leaderboard);
+      // Populate user and sport information
+      const populatedLeaderboard = await Promise.all(leaderboard.map(async (entry) => {
+        const [user, sport] = await Promise.all([
+          UserModel.findById(entry.user),
+          SportModel.getSportById(entry.sport)
+        ]);
+        
+        return {
+          ...entry,
+          user: user ? { _id: user._id, name: user.name } : null,
+          sport: sport ? { _id: sport._id, name: sport.name } : null
+        };
+      }));
+      
+      res.json(populatedLeaderboard);
     } else {
       res.status(404);
       throw new Error('No leaderboard entries found for this game mode');

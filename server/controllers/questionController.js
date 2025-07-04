@@ -1,11 +1,12 @@
-const Question = require('../models/questionModel');
+
+const { QuestionModel } = require('../models/elastic');
 
 // @desc    Get all questions
 // @route   GET /api/questions
 // @access  Public
 const getQuestions = async (req, res) => {
   try {
-    const questions = await Question.find({});
+    const questions = await QuestionModel.getQuestions();
     res.json(questions);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -17,7 +18,7 @@ const getQuestions = async (req, res) => {
 // @access  Public
 const getQuestionById = async (req, res) => {
   try {
-    const question = await Question.findById(req.params.id);
+    const question = await QuestionModel.getQuestionById(req.params.id);
 
     if (question) {
       res.json(question);
@@ -35,7 +36,7 @@ const getQuestionById = async (req, res) => {
 // @access  Public
 const getQuestionsBySport = async (req, res) => {
   try {
-    const questions = await Question.find({ sport: req.params.sportId });
+    const questions = await QuestionModel.getQuestionsBySport(req.params.sportId);
     
     if (questions && questions.length > 0) {
       res.json(questions);
@@ -53,7 +54,7 @@ const getQuestionsBySport = async (req, res) => {
 // @access  Public
 const getQuestionsByGameMode = async (req, res) => {
   try {
-    const questions = await Question.find({ gameMode: req.params.gameModeId });
+    const questions = await QuestionModel.getQuestionsByGameMode(req.params.gameModeId);
     
     if (questions && questions.length > 0) {
       res.json(questions);

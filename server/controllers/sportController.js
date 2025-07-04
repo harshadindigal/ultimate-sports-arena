@@ -1,12 +1,13 @@
-const Sport = require('../models/sportModel');
-const GameMode = require('../models/gameModeModel');
+
+const { SportModel } = require('../models/elastic');
+const { GameModeModel } = require('../models/elastic');
 
 // @desc    Get all sports
 // @route   GET /api/sports
 // @access  Public
 const getSports = async (req, res) => {
   try {
-    const sports = await Sport.find({});
+    const sports = await SportModel.getSports();
     res.json(sports);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -18,9 +19,13 @@ const getSports = async (req, res) => {
 // @access  Public
 const getSportById = async (req, res) => {
   try {
-    const sport = await Sport.findById(req.params.id).populate('gameModes');
+    const sport = await SportModel.getSportById(req.params.id);
 
     if (sport) {
+      // Get game modes for this sport
+      const gameModes = await GameModeModel.getGameModesBySport(req.params.id);
+      sport.gameModes = gameModes;
+      
       res.json(sport);
     } else {
       res.status(404);
@@ -36,9 +41,9 @@ const getSportById = async (req, res) => {
 // @access  Public
 const getSportGameModes = async (req, res) => {
   try {
-    const gameModes = await GameMode.find({ sport: req.params.id });
+    const gameModes = await GameModeModel.getGameModesBySport(req.params.id);
     
-    if (gameModes) {
+    if (gameModes && gameModes.length > 0) {
       res.json(gameModes);
     } else {
       res.status(404);

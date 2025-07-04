@@ -1,0 +1,16 @@
+
+{
+  "name": "sports-arena-data-collection",
+  "version": "1.0.0",
+  "description": "Data collection for Ultimate Sports Arena",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "collect": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "@elastic/elasticsearch": "^8.0.0"
+  }
+}

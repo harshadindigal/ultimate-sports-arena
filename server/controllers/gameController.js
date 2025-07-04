@@ -1,13 +1,12 @@
-const GameMode = require('../models/gameModeModel');
-const GameHistory = require('../models/gameHistoryModel');
-const Leaderboard = require('../models/leaderboardModel');
+
+const { GameModeModel, GameHistoryModel, LeaderboardModel } = require('../models/elastic');
 
 // @desc    Get all game modes
 // @route   GET /api/games
 // @access  Public
 const getGameModes = async (req, res) => {
   try {
-    const gameModes = await GameMode.find({}).populate('sport');
+    const gameModes = await GameModeModel.getGameModes();
     res.json(gameModes);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -19,7 +18,7 @@ const getGameModes = async (req, res) => {
 // @access  Public
 const getGameModeById = async (req, res) => {
   try {
-    const gameMode = await GameMode.findById(req.params.id).populate('sport');
+    const gameMode = await GameModeModel.getGameModeById(req.params.id);
 
     if (gameMode) {
       res.json(gameMode);
@@ -49,7 +48,7 @@ const submitGameResult = async (req, res) => {
     } = req.body;
 
     // Create game history
-    const gameHistory = await GameHistory.create({
+    const gameHistory = await GameHistoryModel.createGameHistory({
       user: req.user._id,
       sport,
       gameMode,
@@ -63,21 +62,22 @@ const submitGameResult = async (req, res) => {
 
     if (gameHistory) {
       // Check if user already has a leaderboard entry for this sport and game mode
-      const existingLeaderboard = await Leaderboard.findOne({
-        user: req.user._id,
+      const existingLeaderboard = await LeaderboardModel.findLeaderboardEntry(
+        req.user._id,
         sport,
-        gameMode,
-      });
+        gameMode
+      );
 
       if (existingLeaderboard) {
         // Update if new score is higher
         if (score > existingLeaderboard.score) {
-          existingLeaderboard.score = score;
-          await existingLeaderboard.save();
+          await LeaderboardModel.updateLeaderboardEntry(existingLeaderboard._id, {
+            score
+          });
         }
       } else {
         // Create new leaderboard entry
-        await Leaderboard.create({
+        await LeaderboardModel.createLeaderboardEntry({
           user: req.user._id,
           sport,
           gameMode,
@@ -86,14 +86,7 @@ const submitGameResult = async (req, res) => {
       }
 
       // Update leaderboard rankings
-      const leaderboards = await Leaderboard.find({ sport, gameMode })
-        .sort({ score: -1 });
-      
-      // Update ranks
-      for (let i = 0; i < leaderboards.length; i++) {
-        leaderboards[i].rank = i + 1;
-        await leaderboards[i].save();
-      }
+      await LeaderboardModel.updateLeaderboardRankings(sport, gameMode);
 
       res.status(201).json(gameHistory);
     } else {

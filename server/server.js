@@ -1,14 +1,13 @@
+
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-const connectDB = require('./config/db');
+const { testConnection } = require('./config/elastic');
+const { initializeIndices } = require('./models/elastic');
 
 // Load environment variables
 dotenv.config();
-
-// Connect to database
-connectDB();
 
 // Initialize Express app
 const app = express();
@@ -17,6 +16,27 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
+
+// Connect to Elasticsearch
+async function connectElasticsearch() {
+  try {
+    const connected = await testConnection();
+    if (connected) {
+      console.log('Elasticsearch Connected');
+      await initializeIndices();
+      console.log('Elasticsearch indices initialized');
+    } else {
+      console.error('Failed to connect to Elasticsearch');
+      process.exit(1);
+    }
+  } catch (error) {
+    console.error(`Elasticsearch connection error: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Connect to Elasticsearch
+connectElasticsearch();
 
 // Define routes
 app.use('/api/users', require('./routes/userRoutes'));
@@ -43,5 +63,5 @@ app.use((err, req, res, next) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
 });
